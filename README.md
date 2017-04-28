@@ -1,2 +1,4 @@
-# pelican-theme
-Pelican theme for the IMM website.
+Pelican Theme for the IMM Website
+=================================
+
+This is the theme.
