@@ -8,16 +8,13 @@
     <title>{% block title %}{{ SITENAME }}{% endblock title %}</title>
     {% endblock head %}
     {% block css %}
+    <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/open_color.css">
     <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/main.css">
     {% endblock css %}
 </head>
 
 <body>
-    {% include "includes/navbar.html" %}
-
-    <main>
-        {% block content %}
-        {% endblock %}
-    </main>
+    {% block body %}
+    {% endblock %}
 </body>
 </html>

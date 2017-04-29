@@ -1,6 +1,6 @@
-{% extends "base.html" %}
+{% extends "base_with_navbar.html" %}
 
-{% block title %}{{ page.title }}{%endblock%}
+{% block title %}{{ page.title }}{% endblock %}
 
 {% block content %}
     <h1>{{ page.title }}</h1>
@@ -8,14 +8,14 @@
     <h2>Metadata</h2>
 
     <ul>
-        <li>Series: {{ page.series }}</li>
+        <li>Series: <a href="{{ SITEURL }}/series#{{ page.series|lower|replace(' ', '-') }}">{{ page.series }}</a></li>
         {% if page.volume_part is defined %}
             <li>Volume: {{ page.volume }}/{{ page.volume_part }}</li>
         {% else %}
             <li>Volume: {{ page.volume }}</li>
         {% endif %}
         {% if page.author is not equalto AUTHOR %}
-            <li>Author: {{ page.author }}</li>
+            <li>Author: <a href="{{ SITEURL }}/{{ AUTHORS_URL }}#{{ page.author.slug }}">{{ page.author }}</a></li>
         {% endif %}
         {% if page.editor is defined %}
             <li>Editor: {{ page.editor }}</li>

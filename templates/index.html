@@ -1,10 +1,34 @@
 {% extends "base.html" %}
 
-{% block content %}
-Take a look at these things:
-<ul>
-    <li><a href="authors.html">Authors</a></li>
-    <li><a href="categories.html">Series</a></li>
-    <li><a href="tags.html">Volumes</a></li>
-</ul>
-{% endblock content %}
+{% block body %}
+<div id="homepage-frame">
+
+    <ul id="homepage-menu">
+        <li class="ordering"><a href="{{ SITEURL }}/ordering">Ordering</a></li>
+        <li class="authors"><a href="{{ SITEURL }}/{{ AUTHORS_URL }}">Authors</a></li>
+        <li class="series"><a href="{{ SITEURL }}/series">Series</a></li>
+        <li class="volumes"><a href="{{ SITEURL }}/volumes">Volumes</a></li>
+    </ul>
+
+    <div id="homepage-about">
+        <picture>
+            <img alt="" src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/img/cathedral.jpg">
+        </picture>
+
+        <h1>The Institute of Medieval Music</h1>
+
+        <p>
+            is what this website is about. Here is some filler text. Here is some filler text.
+            Here is some filler text. Here is some filler text. Here is some filler text.
+            Here is some filler text. Here is some filler text. Here is some filler text.
+            Here is some filler text. Here is some filler text. Here is some filler text.
+            Here is some filler text. Here is some filler text. Here is some filler text.
+            Here is some filler text. Here is some filler text. Here is some filler text.
+            Here is some filler text. Here is some filler text. Here is some filler text.
+            Here is some filler text. Here is some filler text. Here is some filler text.
+            Here is some filler text. Here is some filler text. Here is some filler text.
+            Here is some filler text. Here is some filler text. Here is some filler text.
+    </div>
+
+</div>
+{% endblock body %}
