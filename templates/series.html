@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+<ul>
+{% for category, articles in categories %}
+    <li><a href="{{ SITEURL }}/{{ category.url }}">{{ category }}</a></li>
+{% endfor %}
+</ul>
+
+
+
+
+
+<h1>Series</h1>
+
+<ol class="content-list">
+{% for series in pages|groupby('series') %}
+    <li id="{{ series.grouper|lower|replace(' ', '-') }}">
+        <a href="#{{ series.grouper|lower|replace(' ', '-') }}">{{ series.grouper }}</a>
+        <div class="expansion-part">
+            <h2>{{ series.grouper }}</h2>
+            <ol>
+            {% for book in series.list|sort(attribute='volume') %}
+                <li>{{ book.volume }}/{{ book.volume_part }}: <a href="{{ SITEURL }}/{{ book.url }}">{{ book.title }}</a></li>
+            {% endfor %}
+            </ol>
+        </div>
+    </li>
+{% endfor %}
+</ol>
+{% endblock %}

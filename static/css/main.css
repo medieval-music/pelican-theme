@@ -1,0 +1,51 @@
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+body > header {
+    align-items: center;
+    border: solid black 1px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 16px;
+    padding: 0 16px;
+}
+html {
+    height: 100%;
+}
+nav ul {
+    padding: 0;
+}
+nav li {
+    display: inline;
+    list-style: none;
+}
+main {
+    margin: 16px auto;
+    max-width: 1000px;
+}
+
+.expansion-part {
+    display: none;
+}
+*:target > a {
+    display: none;
+}
+*:target .expansion-part {
+    display: block;
+}
+
+ol.content-list, .content-list ol {
+    list-style: none;
+    padding: 0;
+}
+
+.expansion-part {
+    border: solid black 2px;
+    margin: 16px 0;
+    padding: 16px;
+}
+.expansion-part h2 {
+    margin-top: 0;
+}

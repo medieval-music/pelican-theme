@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}{{ page.title }}{%endblock%}
+
+{% block content %}
+    <h1>{{ page.title }}</h1>
+
+    <h2>Metadata</h2>
+
+    <ul>
+        <li>Series: {{ page.series }}</li>
+        {% if page.volume_part is defined %}
+            <li>Volume: {{ page.volume }}/{{ page.volume_part }}</li>
+        {% else %}
+            <li>Volume: {{ page.volume }}</li>
+        {% endif %}
+        {% if page.author is not equalto AUTHOR %}
+            <li>Author: {{ page.author }}</li>
+        {% endif %}
+        {% if page.editor is defined %}
+            <li>Editor: {{ page.editor }}</li>
+        {% endif %}
+        <li>Price: &euro;{{ page.price }}</li>
+        <li>ISBN: {% if page.isbn13 is defined %}{{ page.isbn13 }}{% elif page.isbn10 is defined %}{{ page.isbn10 }}{% endif %}</li>
+        {% if page.pages is defined %}
+            <li>Pages: {{ page.pages }}&nbsp;pp.{% if page.plates is defined %} plus {{ page.plates }} plates{% endif %}</li>
+        {% endif %}
+        {% if page.size is defined %}
+            <li>Size: {{ page.size }}&nbsp;cm</li>
+        {% endif %}
+    </ul>
+
+    <h2>Bibliographic Reference</h2>
+
+    <div>
+        {% if page.author is equalto AUTHOR %}Anonymous or Something{% else %}{{ page.author }}{% endif %}.&nbsp;
+        <i>{{ page.title }}</i>. {{ page.publisher }}, {{ page.place }}: {{ page.year }}.
+    </div>
+
+    <h2>Description</h2>
+
+    {{ page.content }}
+
+    {% if page.corrigenda is defined %}
+        <h2>Corrigenda</h2>
+        <p>{{ page.corrigenda }}</p>
+    {% endif %}
+
+{% endblock %}

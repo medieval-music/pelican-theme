@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}{{ SITENAME }} - Authors{% endblock %}
+
+{% block content %}
+<h1>Authors</h1>
+
+<ol class="content-list">
+{% for author in pages|groupby('author') %}
+    {% if author.grouper is not equalto(AUTHOR) %}
+    <li id="{{ author.list[0].author.slug }}">
+        <a href="#{{ author.list[0].author.slug }}">{{ author.grouper }}</a>
+        <div class="expansion-part">
+            <h2>{{ author.grouper }}</h2>
+            <ol>
+            {% for book in author.list|sort(attribute='title') %}
+                <li><a href="{{ SITEURL }}/{{ book.url }}">{{ book.title }}</a></li>
+            {% endfor %}
+            </ol>
+        </div>
+    </li>
+    {% endif %}
+{% endfor %}
+</ol>
+{% endblock %}
