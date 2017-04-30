@@ -38,6 +38,7 @@ a {
 /* navbar */
 #site-header {
     --navbar-height: 75px;
+    --navbar-item-width: 100px;
 
     align-items: center;
     background-color: var(--oc-gray-2);
@@ -49,6 +50,7 @@ a {
 }
 #site-header nav {
     height: var(--navbar-height);
+    margin-left: 40px;
 }
 #site-header ul {
     height: var(--navbar-height);
@@ -60,22 +62,19 @@ a {
 }
 #site-header li {
     list-style: none;
-    /*display: inline;*/
     height: var(--navbar-height);
-    /*padding: 16px;
-
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;*/
+    width: var(--navbar-item-width);
 }
 #site-header li + li {
-    margin-left: 16px;
+    margin-left: 24px;
 }
 #site-header a {
+    align-items: center;
     display: flex;
     height: var(--navbar-height);
+    justify-content: center;
     padding: 16px;
-    align-items: center;
+    width: var(--navbar-item-width);
 }
 #site-header a:hover {
     text-decoration: underline;
@@ -84,13 +83,23 @@ a {
 
 /*  */
 main {
-    margin: 16px auto;
-    max-width: 1000px;
+    margin-left: 15vw;
 }
+.imm-title {
+    font-size: 2.8rem;
+}
+h1 {
+    font-size: 3rem;
+}
+/*  */
 
 /*  */
 .expansion-part {
     display: none;
+
+    font-size: 1rem;
+    margin-right: 16px;
+    max-width: 1000px;
 }
 *:target > a {
     display: none;
@@ -98,10 +107,27 @@ main {
 *:target .expansion-part {
     display: block;
 }
+*:target {
+    margin-left: -5vw;
+}
 
-ol.content-list, .content-list ol {
+.content-list, .content-list ol {
     list-style: none;
     padding: 0;
+}
+
+.content-list {
+    font-size: 1.1em;
+    line-height: 1.6em;
+    margin-left: 5vw;
+}
+.content-list > li > a {
+    border: solid 1px #fff0;
+    padding: 0 .5em;
+}
+.content-list.author-list > li > a:hover {
+    background-color: var(--oc-teal-1);
+    border-color: var(--oc-teal-3);
 }
 
 .expansion-part {
@@ -110,7 +136,22 @@ ol.content-list, .content-list ol {
     padding: 16px;
 }
 .expansion-part h2 {
+    font-size: 2em;
     margin-top: 0;
+}
+.author-list .expansion-part {
+    border-color: var(--oc-teal-3);
+}
+
+.list-of-books {
+    padding-left: 2rem;
+}
+.list-of-books > li::before {
+    content: '→ ';
+}
+.list-of-books a:hover {
+    color: var(--oc-teal-9);
+    text-decoration: underline;
 }
 /*  */
 
