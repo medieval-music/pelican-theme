@@ -8,33 +8,87 @@ body {
     margin: 0;
     padding: 0;
 }
+html {
+    height: 100%;
+}
 a {
     color: inherit;
     text-decoration: none;
 }
-body > header {
+
+/* section colours */
+.authors {
+    background-color: var(--oc-teal-1);
+    color: var(--oc-teal-8);
+}
+.ordering {
+    background-color: var(--oc-red-1);
+    color: var(--oc-red-8);
+}
+.series {
+    background-color: var(--oc-indigo-1);
+    color: var(--oc-indigo-8);
+}
+.volumes {
+    background-color: var(--oc-orange-1);
+    color: var(--oc-orange-8);
+}
+/* end section colours */
+
+/* navbar */
+#site-header {
+    --navbar-height: 75px;
+
     align-items: center;
-    border: solid black 1px;
+    background-color: var(--oc-gray-2);
     display: flex;
+    height: var(--navbar-height);
     justify-content: space-between;
     margin-bottom: 16px;
     padding: 0 16px;
 }
-html {
-    height: 100%;
+#site-header nav {
+    height: var(--navbar-height);
 }
-nav ul {
+#site-header ul {
+    height: var(--navbar-height);
+    margin: 0;
     padding: 0;
+
+    display: flex;
+    align-items: stretch;
 }
-nav li {
-    display: inline;
+#site-header li {
     list-style: none;
+    /*display: inline;*/
+    height: var(--navbar-height);
+    /*padding: 16px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;*/
 }
+#site-header li + li {
+    margin-left: 16px;
+}
+#site-header a {
+    display: flex;
+    height: var(--navbar-height);
+    padding: 16px;
+    align-items: center;
+}
+#site-header a:hover {
+    text-decoration: underline;
+}
+/* end navbar */
+
+/*  */
 main {
     margin: 16px auto;
     max-width: 1000px;
 }
 
+/*  */
 .expansion-part {
     display: none;
 }
@@ -58,7 +112,9 @@ ol.content-list, .content-list ol {
 .expansion-part h2 {
     margin-top: 0;
 }
+/*  */
 
+/* homepage */
 #homepage-frame {
     height: 100%;
     width: 100%;
@@ -114,20 +170,4 @@ ol.content-list, .content-list ol {
 #homepage-about picture {
     width: 80%;
 }
-
-.authors {
-    background-color: var(--oc-teal-1);
-    color: var(--oc-teal-8);
-}
-.ordering {
-    background-color: var(--oc-red-1);
-    color: var(--oc-red-8);
-}
-.series {
-    background-color: var(--oc-indigo-1);
-    color: var(--oc-indigo-8);
-}
-.volumes {
-    background-color: var(--oc-orange-1);
-    color: var(--oc-orange-8);
-}
+/* end homepage */
