@@ -8,16 +8,27 @@
     <h2>Metadata</h2>
 
     <ul>
-        <li>Series: <a href="{{ SITEURL }}/series#{{ page.series|lower|replace(' ', '-') }}">{{ page.series }}</a></li>
+        <li>
+            <a class="series" href="{{ SITEURL }}/series#{{ page.series|lower|replace(' ', '-') }}">
+                Series: {{ page.series }}
+            </a>
+        </li>
         {% if page.volume_part is defined %}
-            <li>Volume: {{ page.volume }}/{{ page.volume_part }}</li>
+            <li>
+                <a class="volumes" href="">Volume: {{ page.volume }}/{{ page.volume_part }}</a>
+            </li>
         {% else %}
             <li>Volume: {{ page.volume }}</li>
         {% endif %}
         {% if page.author is not equalto AUTHOR %}
-            <li>Author: <a href="{{ SITEURL }}/{{ AUTHORS_URL }}#{{ page.author.slug }}">{{ page.author }}</a></li>
+            <li>
+                <a class="authors" href="{{ SITEURL }}/{{ AUTHORS_URL }}#{{ page.author.slug }}">
+                    Author: {{ page.author }}
+                </a>
+            </li>
         {% endif %}
         {% if page.editor is defined %}
+            {# TODO: add link to editor #}
             <li>Editor: {{ page.editor }}</li>
         {% endif %}
         <li>Price: &euro;{{ page.price }}</li>

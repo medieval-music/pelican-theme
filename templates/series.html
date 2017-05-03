@@ -3,15 +3,16 @@
 {% block content %}
 <h1>Series</h1>
 
-<ol class="content-list">
+<ol class="content-list series-list">
 {% for series in pages|groupby('series') %}
     <li id="{{ series.grouper|lower|replace(' ', '-') }}">
         <a href="#{{ series.grouper|lower|replace(' ', '-') }}">{{ series.grouper }}</a>
         <div class="expansion-part">
             <h2>{{ series.grouper }}</h2>
-            <ol>
+            <ol class="list-of-books">
             {% for book in series.list|sort(attribute='volume') %}
                 <li>
+                    &rarr;&nbsp;
                     {{ book.volume }}{% if book.volume_part is defined %}/{{ book.volume_part }}{% endif %}:
                     <a href="{{ SITEURL }}/{{ book.url }}">{{ book.title }}</a>
                 </li>

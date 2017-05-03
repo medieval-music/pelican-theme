@@ -14,7 +14,7 @@
             <h2>{{ author.grouper }}</h2>
             <ol class="list-of-books">
             {% for book in author.list|sort(attribute='title') %}
-                <li><a href="{{ SITEURL }}/{{ book.url }}">{{ book.title }}</a></li>
+                <li>&rarr;&nbsp;<a href="{{ SITEURL }}/{{ book.url }}">{{ book.title }}</a></li>
             {% endfor %}
             </ol>
         </div>

@@ -5,7 +5,7 @@
 {% block content %}
 <h1>Multi-Part Volumes</h1>
 
-<ol class="content-list">
+<ol class="content-list volume-list">
 {% for series in pages|groupby('series') %}
 {# TODO: only write the series title if we're going to have books in it #}
 <h2>{{ series.grouper }}</h2>
@@ -14,10 +14,10 @@
         <li id="{{ volume.grouper|lower|replace(' ', '-') }}">
             <a href="#{{ volume.grouper|lower|replace(' ', '-') }}">{{ volume.grouper }}</a>
             <div class="expansion-part">
-                <h3>{{ volume.list[0].series }}, Vol. {{ volume.grouper }}</h3>
-                <ol>
+                <h3>{{ volume.list[0].series }}, volume {{ volume.grouper }}</h3>
+                <ol class="list-of-books">
                 {% for book in volume.list|sort(attribute='volume_part') %}
-                    <li>Part {{ book.volume_part }}: <a href="{{ SITEURL }}/{{ book.url }}">{{ book.title }}</a></li>
+                    <li>&rarr;&nbsp;Part {{ book.volume_part }}: <a href="{{ SITEURL }}/{{ book.url }}">{{ book.title }}</a></li>
                 {% endfor %}
                 </ol>
             </div>
