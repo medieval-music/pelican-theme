@@ -7,7 +7,7 @@
 
 <ol class="content-list">
 {% for series in pages|groupby('series') %}
-{# TODO: only write the series title if we're going to have books in it %}
+{# TODO: only write the series title if we're going to have books in it #}
 <h2>{{ series.grouper }}</h2>
     {% for volume in series.list|groupby('volume') %}
         {% if volume.list|length > 1 %}
