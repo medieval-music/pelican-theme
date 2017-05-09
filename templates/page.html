@@ -3,6 +3,7 @@
 {% block title %}{{ page.title }}{% endblock %}
 
 {% block content %}
+
     <h1>{{ page.title }}</h1>
 
     <h2>Metadata</h2>
@@ -10,11 +11,12 @@
     <ul>
         <li>
             <a class="series" href="{{ SITEURL }}/series#{{ page.series|lower|replace(' ', '-') }}">
-                Series: {{ page.series }}
+                Series: {{ SERIES_NAMES[page.series] }}
             </a>
         </li>
         {% if page.volume_part is defined %}
             <li>
+                {# TODO: the @href for the following #}
                 <a class="volumes" href="">Volume: {{ page.volume }}/{{ page.volume_part }}</a>
             </li>
         {% else %}
@@ -44,7 +46,7 @@
     <h2>Bibliographic Reference</h2>
 
     <div>
-        {% if page.author is equalto AUTHOR %}Anonymous or Something{% else %}{{ page.author }}{% endif %}.&nbsp;
+        {% if page.author is equalto AUTHOR %}Anonymous{% else %}{{ page.author }}{% endif %}.&nbsp;
         <i>{{ page.title }}</i>. {{ page.publisher }}, {{ page.place }}: {{ page.year }}.
     </div>
 
