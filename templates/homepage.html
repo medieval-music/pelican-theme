@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block body %}
+<div id="homepage-frame">
+
+    <ul id="homepage-menu">
+        <li class="ordering with-bg"><a href="{{ SITEURL }}/ordering">Ordering</a></li>
+        <li class="authors with-bg"><a href="{{ SITEURL }}/{{ AUTHORS_URL }}">Authors</a></li>
+        <li class="series with-bg"><a href="{{ SITEURL }}/series">Series</a></li>
+        <li class="volumes with-bg"><a href="{{ SITEURL }}/volumes">Volumes</a></li>
+    </ul>
+
+    <div class="homepage-about" id="homepage-details">
+        <h1>Institute of Medieval Music</h1>
+
+        <div class="clicky-expand-divider">
+            <span class="expandy-lines"></span>
+            <a href="#">V</a>
+            <span class="expandy-lines"></span>
+        </div>
+
+        {{ page.content }}
+    </div>
+
+    <div class="homepage-about" id="homepage-no-details">
+        <picture>
+            <img alt="" src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/img/cathedral.jpg">
+        </picture>
+
+        <h1>Institute of Medieval Music</h1>
+
+        <div class="clicky-expand-divider">
+            <span class="expandy-lines"></span>
+            <a href="#homepage-details">V</a>
+            <span class="expandy-lines"></span>
+        </div>
+    </div>
+
+</div>
+{% endblock body %}

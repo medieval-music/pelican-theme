@@ -32,6 +32,65 @@ a:hover, a:focus {
 .volumes.with-bg { background-color: var(--oc-orange-1); }
 /* end section colours */
 
+
+/* this is the arrow surrounded by two lines that expands and closes sections on the homepage */
+.clicky-expand-divider {
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+    --button-width: 32px;
+}
+.clicky-expand-divider a {
+    height: var(--button-width);
+    width: var(--button-width);
+
+    background-color: var(--oc-gray-1);
+    color: var(--oc-gray-6);
+    font-weight: bold;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+    border-width: 1px;
+    border-style: solid;
+    border-color: var(--oc-gray-1);
+    border-radius: calc(var(--button-width) / 2);
+
+    /* This is the fully expanded size (40px) minus normal size (32px), half for each side. */
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+.clicky-expand-divider a:hover, .clicky-expand-divider a:focus {
+    --button-width: 40px;
+    background-color: var(--oc-gray-3);
+    border-color: var(--oc-gray-3);
+    text-decoration: none;
+
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.clicky-expand-divider .expandy-lines {
+    border-bottom: var(--oc-gray-1) solid 3px;
+    flex-grow: 1;
+    margin-left: calc(var(--button-width) / 2);
+    margin-right: calc(var(--button-width) / 2);
+}
+/* end */
+
+
+/* links to other sites */
+a.external {
+    color: var(--oc-gray-6);
+}
+a.external:hover, a.external:focus {
+    text-decoration: underline;
+}
+/* end: links to other sites */
+
+
 /* navbar */
 #site-header {
     --navbar-height: 75px;
@@ -95,13 +154,13 @@ h1 {
     margin-right: 16px;
     max-width: 1000px;
 }
-*:target > a {
+.content-list *:target > a {
     display: none;
 }
-*:target .expansion-part {
+.content-list *:target .expansion-part {
     display: block;
 }
-*:target {
+.content-list *:target {
     margin-left: -5vw;
 }
 
@@ -214,7 +273,7 @@ h1 {
     transform: rotate(-.25turn);
     transform-origin: center;
 }
-#homepage-about {
+.homepage-about {
     flex-basis: 25em;
     flex-grow: 1;
     height: 100%;
@@ -226,10 +285,27 @@ h1 {
     align-items: center;
     justify-content: center;
 }
-#homepage-about img {
+#homepage-no-details img {
     width: 100%;
 }
-#homepage-about picture {
+#homepage-no-details picture {
     width: 80%;
+}
+#homepage-no-details {
+    order: 1;
+}
+#homepage-details {
+    display: none;
+    order: 2;
+}
+#homepage-details .clicky-expand-divider a {
+    transform: rotate(-.5turn);
+    transform-origin: center;
+}
+#homepage-details:target {
+    display: block;
+}
+#homepage-details:target ~ * {
+    display: none;
 }
 /* end homepage */
