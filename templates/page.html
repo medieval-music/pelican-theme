@@ -41,9 +41,10 @@
         <i>{{ page.title }}</i>. {{ page.publisher }}, {{ page.place }}: {{ page.year }}.
     </div>
 
-    <h2>Description</h2>
-
-    {{ page.content }}
+    {% if page.content %}
+        <h2>Description</h2>
+        {{ page.content }}
+    {% endif %}
 
     {% if page.corrigenda is defined %}
         <h2>Corrigenda</h2>
