@@ -22,17 +22,8 @@
         {% else %}
             <li>Volume: {{ page.volume }}</li>
         {% endif %}
-        {% if page.author is not equalto AUTHOR %}
-            <li>
-                <a class="authors" href="{{ SITEURL }}/{{ AUTHORS_URL }}#{{ page.author.slug }}">
-                    Author: {{ page.author }}
-                </a>
-            </li>
-        {% endif %}
-        {% if page.editor is defined %}
-            {# TODO: add link to editor #}
-            <li>Editor: {{ page.editor }}</li>
-        {% endif %}
+        {% include "includes/authors_block.html" with context %}
+        {% include "includes/editors_block.html" with context %}
         <li>Price: &euro;{{ page.price }}</li>
         <li>ISBN: {% if page.isbn13 is defined %}{{ page.isbn13 }}{% elif page.isbn10 is defined %}{{ page.isbn10 }}{% endif %}</li>
         {% if page.pages is defined %}

@@ -6,20 +6,21 @@
 <h1>Authors</h1>
 
 <ol class="content-list author-list">
-{% for author in pages|groupby('author') %}
-    {% if author.grouper is not equalto(AUTHOR) %}
-    <li id="{{ author.list[0].author.slug }}">
-        <a href="#{{ author.list[0].author.slug }}">{{ author.grouper }}</a>
+{% for author in imm_authors_list %}
+    <li id="{{ author['author slug'] }}">
+        <a href="#{{ author['author slug'] }}">{{ author['author name'] }}</a>
         <div class="expansion-part">
-            <h2>{{ author.grouper }}</h2>
+            <h2>{{ author['author name'] }}</h2>
             <ol class="list-of-books">
-            {% for book in author.list|sort(attribute='title') %}
-                <li>&rarr;&nbsp;<a href="{{ SITEURL }}/{{ book.url }}">{{ book.title }}</a></li>
+            {% for book in author['books'] %}
+                <li>&rarr;&nbsp;
+                    <a href="{{ SITEURL }}/books/{{ book['isbn13'] }}">{{ book['title'] }}</a>
+                    {% if book['is editor'] %}(Editor){% endif %}
+                </li>
             {% endfor %}
             </ol>
         </div>
     </li>
-    {% endif %}
 {% endfor %}
 </ol>
 {% endblock %}

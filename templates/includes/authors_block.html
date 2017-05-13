@@ -1,0 +1,10 @@
+{% if page.imm_authors|length > 0 %}
+<li class="author-list">
+    {% if page.imm_authors|length > 1 %}Authors{% else %}Author{% endif %}:
+    {% for author in page.imm_authors %}
+        <a class="authors" href="{{ SITEURL }}/{{ AUTHORS_URL }}#{{ author.slug }}">
+            {{ author }}{% if not loop.last %};{% endif %}
+        </a>
+    {% endfor %}
+</li>
+{% endif %}

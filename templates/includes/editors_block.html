@@ -1,0 +1,10 @@
+{% if page.imm_editors|length > 0 %}
+<li class="author-list">
+    {% if page.imm_editors|length > 1 %}Editors{% else %}Editor{% endif %}:
+    {% for editor in page.imm_editors %}
+        <a class="authors" href="{{ SITEURL }}/{{ AUTHORS_URL }}#{{ editor.slug }}">
+            {{ editor }}{% if not loop.last %};{% endif %}
+        </a>
+    {% endfor %}
+</li>
+{% endif %}
