@@ -124,7 +124,7 @@ a.external:hover, a.external:focus {
 #site-header li + li {
     margin-left: 24px;
 }
-#site-header a {
+#site-header nav a {
     align-items: center;
     display: flex;
     height: var(--navbar-height);
@@ -136,10 +136,37 @@ a.external:hover, a.external:focus {
 
 /*  */
 main {
-    margin-left: 15vw;
+    --margin-width: 5vw;
+    margin-left: var(--margin-width);
+    margin-right: var(--margin-width);
+    max-width: 1000px;
+}
+@media (min-width: 600px) {
+    main {
+        --margin-width: 10vw;
+    }
+}
+@media (min-width: 800px) {
+    main {
+        --margin-width: 15vw;
+    }
 }
 .imm-title {
-    font-size: 2.8rem;
+    font-size: calc(2vw + 1rem);
+}
+.imm-title.large {
+    display: block
+}
+.imm-title.small {
+    display: none;
+}
+@media (max-width: 1000px) {
+    .imm-title.large {
+        display: none;
+    }
+    .imm-title.small {
+        display: block;
+    }
 }
 h1 {
     font-size: 3rem;
