@@ -1,0 +1,6 @@
+{% if page.isbn10 is defined %}
+    <li>ISBN-13: {{ page.isbn13 }}</li>
+    <li>ISBN-10: {{ page.isbn10 }}</li>
+{% else %}
+    <li>ISBN: {{ page.isbn13 }}</li>
+{% endif %}

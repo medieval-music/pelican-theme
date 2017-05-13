@@ -25,7 +25,7 @@
         {% include "includes/authors_block.html" with context %}
         {% include "includes/editors_block.html" with context %}
         <li>Price: &euro;{{ page.price }}</li>
-        <li>ISBN: {% if page.isbn13 is defined %}{{ page.isbn13 }}{% elif page.isbn10 is defined %}{{ page.isbn10 }}{% endif %}</li>
+        {% include "includes/isbn_block.html" with context %}
         {% if page.pages is defined %}
             <li>Pages: {{ page.pages }}&nbsp;pp.{% if page.plates is defined %} plus {{ page.plates }} plates{% endif %}</li>
         {% endif %}
