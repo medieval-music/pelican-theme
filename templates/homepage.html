@@ -24,7 +24,22 @@
 
     <div class="homepage-about" id="homepage-no-details">
         <picture>
-            <img alt="" src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/img/cathedral.jpg">
+            {# The size in @srcset is max viewport width to show that image source. #}
+            <source
+                srcset="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/img/homepage-200px.webp 410w,
+                        {{ SITEURL }}/{{ THEME_STATIC_DIR }}/img/homepage-300px.webp 560w,
+                        {{ SITEURL }}/{{ THEME_STATIC_DIR }}/img/homepage-400px.webp 1160w,
+                        {{ SITEURL }}/{{ THEME_STATIC_DIR }}/img/homepage-500px.webp 1920w"
+                type="image/webp"
+            >
+            <source
+                srcset="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/img/homepage-200px.jpg 410w,
+                        {{ SITEURL }}/{{ THEME_STATIC_DIR }}/img/homepage-300px.jpg 560w,
+                        {{ SITEURL }}/{{ THEME_STATIC_DIR }}/img/homepage-400px.jpg 1160w,
+                        {{ SITEURL }}/{{ THEME_STATIC_DIR }}/img/homepage-500px.jpg 1920w"
+                type="image/jpeg"
+            >
+            <img alt="" src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/img/homepage-500px.jpg">
         </picture>
 
         <h1>Institute of Mediaeval Music</h1>
