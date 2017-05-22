@@ -14,7 +14,7 @@
                 Series: {{ SERIES_NAMES[page.series] }}
             </a>
         </li>
-        {% if page.volume_part is defined %}
+        {% if page.volume_part is defined and page.volume_part != DEFAULT_METADATA['volume_part'] %}
             <li>
                 {# TODO: the @href for the following #}
                 <a class="volumes" href="">Volume: {{ page.volume }}/{{ page.volume_part }}</a>

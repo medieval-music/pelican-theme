@@ -17,7 +17,7 @@
                 {% if book.volume != DEFAULT_METADATA['volume'] %}
                 <li>
                     &rarr;&nbsp;
-                    {{ book.volume }}{% if book.volume_part is defined %}/{{ book.volume_part }}{% endif %}:
+                    {{ book.volume }}{% if book.volume_part is defined and book.volume_part != DEFAULT_METADATA['volume_part'] %}/{{ book.volume_part }}{% endif %}:
                     <a href="{{ SITEURL }}/{{ book.url }}">{{ book.title }}</a>
                 </li>
                 {% endif %}
