@@ -1,5 +1,9 @@
 {% extends "base.html" %}
 
+{% macro image_link(size, format, last) %}
+{{ SITEURL }}/{{ THEME_STATIC_DIR }}/img/homepage-{{ size }}.{{ format }} {{ size }}w{% if not last %},{% endif %}
+{% endmacro %}
+
 {% block body %}
 <div id="homepage-frame">
 
@@ -23,24 +27,35 @@
     </div>
 
     <div class="homepage-about" id="homepage-no-details">
-        <picture>
-            {# The size in @srcset is max viewport width to show that image source. #}
-            <source
-                srcset="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/img/homepage-200px.webp 410w,
-                        {{ SITEURL }}/{{ THEME_STATIC_DIR }}/img/homepage-300px.webp 560w,
-                        {{ SITEURL }}/{{ THEME_STATIC_DIR }}/img/homepage-400px.webp 1160w,
-                        {{ SITEURL }}/{{ THEME_STATIC_DIR }}/img/homepage-500px.webp 1920w"
-                type="image/webp"
-            >
-            <source
-                srcset="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/img/homepage-200px.jpg 410w,
-                        {{ SITEURL }}/{{ THEME_STATIC_DIR }}/img/homepage-300px.jpg 560w,
-                        {{ SITEURL }}/{{ THEME_STATIC_DIR }}/img/homepage-400px.jpg 1160w,
-                        {{ SITEURL }}/{{ THEME_STATIC_DIR }}/img/homepage-500px.jpg 1920w"
-                type="image/jpeg"
-            >
-            <img alt="" src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/img/homepage-500px.jpg">
-        </picture>
+        <figure>
+            <picture>
+                {# The size in @srcset is max viewport width to show that image source. #}
+                {% if HOMEPAGE_IMAGE_SIZES is defined %}
+                <source
+                    sizes="30vw"
+                    srcset="
+                        {% for size in HOMEPAGE_IMAGE_SIZES %}
+                        {{ image_link(size, 'webp', loop.last) }}
+                        {% endfor %}
+                        "
+                    type="image/webp"
+                >
+                <source
+                    sizes="30vw"
+                    srcset="
+                        {% for size in HOMEPAGE_IMAGE_SIZES %}
+                        {{ image_link(size, 'jpg', loop.last) }}
+                        {% endfor %}
+                        "
+                    type="image/jpeg"
+                >
+                {% endif %}
+                <img alt="" src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/img/homepage-500px.jpg">
+            </picture>
+            {% if HOMEPAGE_IMAGE_CREDIT is defined %}
+                <figcaption>{{ HOMEPAGE_IMAGE_CREDIT }}</figcaption>
+            {% endif %}
+        </figure>
 
         <h1>Institute of Mediaeval Music</h1>
 
