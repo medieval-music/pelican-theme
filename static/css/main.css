@@ -273,6 +273,9 @@ h1 {
     display: flex;
     justify-content: space-between;
 }
+#homepage-frame h1 {
+    text-align: center;
+}
 #homepage-menu {
     flex-grow: 3;
     list-style: none;
