@@ -339,3 +339,15 @@ h1 {
     display: none;
 }
 /* end homepage */
+
+
+/* start: bibliographic-reference */
+cite {
+    font-style: normal;
+}
+.bibliographic-reference {
+    display: block;
+    padding-left: 20px;
+    text-indent: -20px;
+}
+/* end: bibliographic-reference */

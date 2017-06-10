@@ -1,0 +1,11 @@
+<h2>Bibliographic Reference</h2>
+
+<cite class="bibliographic-reference">
+    {% if page.author is not equalto AUTHOR %}{{ page.author }}.{% elif page.editor %}{{ page.editor}}&nbsp;(editor).{% endif %}
+
+    <i>{{ page.title }}</i>.
+
+    {% if page.publisher %}{{ page.publisher }},{% endif %}
+
+    {% if page.place and page.year %}{{ page.place }}:&ensp;<time>{{ page.year }}</time>.{% endif %}
+</cite>

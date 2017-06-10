@@ -34,12 +34,7 @@
         {% endif %}
     </ul>
 
-    <h2>Bibliographic Reference</h2>
-
-    <div>
-        {% if page.author is equalto AUTHOR %}Anonymous{% else %}{{ page.author }}{% endif %}.&nbsp;
-        <i>{{ page.title }}</i>. {{ page.publisher }}, {{ page.place }}: {{ page.year }}.
-    </div>
+    {% include "includes/bibliographic_reference.html" with context %}
 
     {% if page.content %}
         <h2>Description</h2>
