@@ -6,26 +6,21 @@
 <h1>Multi-Part Volumes</h1>
 
 <ol class="content-list volume-list">
-{% for series in pages|groupby('series') %}
-{# TODO: only write the series title if we're going to have books in it #}
-{% if series.grouper != DEFAULT_METADATA['series'] %}
-<h2>{{ SERIES_NAMES[series.grouper] }}</h2>
-    {% for volume in series.list|groupby('volume') %}
-        {% if volume.list|length > 1 and volume.grouper != DEFAULT_METADATA['volume'] %}
-        <li id="{{ series.grouper }}-{{ volume.grouper|lower|replace(' ', '-') }}">
-            <a href="#{{ series.grouper }}-{{ volume.grouper|lower|replace(' ', '-') }}">Vol.&nbsp;{{ volume.grouper }}</a>
+{% for series in multipart_volumes %}
+<h2>{{ series.series_name }}</h2>
+    {% for volume in series.volumes %}
+        <li id="{{ series.series }}-{{ volume.volume }}">
+            <a href="#{{ series.series }}-{{ volume.volume }}">Vol.&nbsp;{{ volume.volume }}</a>
             <div class="expansion-part">
-                <h3>{{ SERIES_NAMES[series.grouper] }}, volume {{ volume.grouper }}</h3>
+                <h3>{{ series.series_name }}, volume {{ volume.volume }}</h3>
                 <ol class="list-of-books">
-                {% for book in volume.list|sort(attribute='volume_part') %}
+                {% for book in volume.books %}
                     <li>&rarr;&nbsp;Part {{ book.volume_part }}: <a href="{{ SITEURL }}/{{ book.url }}">{{ book.title }}</a></li>
                 {% endfor %}
                 </ol>
             </div>
         </li>
-        {% endif %}
     {% endfor %}
-{% endif %}
 {% endfor %}
 </ol>
 {% endblock %}

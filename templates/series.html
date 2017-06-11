@@ -15,9 +15,10 @@
         <div class="expansion-part">
             <h2>{{ SERIES_NAMES[series.grouper] }}</h2>
             <ol class="list-of-books">
-            {% for book in series.list|sort(attribute='volume') %}
+            {% for book in series.list|sort(attribute='volume_sort') %}
                 {% if book.volume != DEFAULT_METADATA['volume'] %}
                 <li>
+                    <!-- volume_sort: {{ book.volume_sort }} -->
                     &rarr;&nbsp;
                     {{ book.volume }}{% if book.volume_part is defined and book.volume_part != DEFAULT_METADATA['volume_part'] %}/{{ book.volume_part }}{% endif %}:
                     <a href="{{ SITEURL }}/{{ book.url }}">{{ book.title }}</a>
