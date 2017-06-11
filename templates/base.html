@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="renderer" content="webkit">
     {% block head %}
-    <title>{% block title %}{{ SITENAME }}{% endblock title %}</title>
+    <title>{% block whole_title %}{% block title %}{% endblock title %} | {{ SITENAME }}{% endblock %}</title>
     {% endblock head %}
     {% block css %}
     <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/open_color.css">

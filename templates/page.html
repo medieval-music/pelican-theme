@@ -1,6 +1,7 @@
 {% extends "base_with_navbar.html" %}
 
-{% block title %}{{ page.title }}{% endblock %}
+{# We need "striptags" filter because Pelican adds <span class="caps"> sometimes! #}
+{% block title %}{{ page.title|striptags }}{% endblock %}
 
 {% block content %}
 

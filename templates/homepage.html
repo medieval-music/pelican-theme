@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% block whole_title %}{{ SITENAME }}{% endblock %}
+
 {% macro image_link(size, format, last) %}
 {{ SITEURL }}/{{ THEME_STATIC_DIR }}/img/homepage-{{ size }}.{{ format }} {{ size }}w{% if not last %},{% endif %}
 {% endmacro %}
