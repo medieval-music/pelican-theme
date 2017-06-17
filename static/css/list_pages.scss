@@ -1,0 +1,97 @@
+// For the pages that are lists of books (i.e., Authors, Series, Volumes).
+
+.list-of-books {
+    padding-left: 2rem;
+}
+
+.content-list {
+    font-size: 1.1em;
+    line-height: 1.6em;
+    margin-left: 5vw;
+
+    *:target {
+        margin-left: -5vw;
+
+        > a {
+            display: none;
+        }
+        .expansion-part {
+            display: block;
+        }
+    }
+
+    > li > a {
+        // TODO: this rgba() probably won't work in Safari
+        border: solid 1px rgba(255, 255, 255, 0);
+        padding: 0 .5em;
+
+        &:hover, &:focus {
+            text-decoration: none;
+        }
+    }
+
+    // TODO: there's probably a way to do this with a "function"-alike but I don't remember off the top of my head
+    &.author-list > li > a:hover,
+    &.author-list > li > a:focus {
+        background-color: var(--authors-background-color);
+        border-color: var(--authors-border-color);
+    }
+    &.series-list > li > a:hover,
+    &.series-list > li > a:focus {
+        background-color: var(--series-background-color);
+        border-color: var(--series-border-color);
+    }
+    &.volume-list > li > a:hover,
+    &.volume-list > li > a:focus {
+        background-color: var(--volumes-background-color);
+        border-color: var(--volumes-border-color);
+    }
+}
+
+.content-list, .content-list ol {
+    list-style: none;
+    padding: 0;
+}
+
+.expansion-part {
+    display: none;
+
+    border: solid black 2px;
+    font-size: 1rem;
+    max-width: 1000px;
+    margin: 16px 0;
+    padding: 16px;
+
+    h2 {
+        font-size: 2em;
+        margin-top: 0;
+    }
+
+    h3 {
+        font-size: 2em;
+        margin-top: 0;
+    }
+}
+
+.author-list .expansion-part {
+    border-color: var(--authors-border-color);
+}
+.series-list .expansion-part {
+    border-color: var(--series-border-color);
+}
+.volume-list .expansion-part {
+    border-color: var(--volumes-border-color);
+}
+
+.author-list .list-of-books a:hover,
+.author-list .list-of-books a:focus {
+    color: var(--authors-color-focus);
+}
+.series-list .list-of-books a:hover,
+.series-list .list-of-books a:focus {
+    color: var(--series-color-focus);
+}
+.volume-list .list-of-books a:hover,
+.volume-list .list-of-books a:focus {
+    color: var(--volumes-color-focus);
+}

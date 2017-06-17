@@ -1,0 +1,135 @@
+#homepage-frame {
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+
+    h1 {
+        text-align: center;
+    }
+}
+
+#homepage-menu {
+    flex-grow: 3;
+    list-style: none;
+    margin: 0;
+    padding: 0 16px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+
+    li {
+        flex-grow: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        font-size: 5vw;
+        min-width: 5vw;
+    }
+
+    li + li {
+        margin-left: 16px;
+    }
+
+    a {
+        position: absolute;
+        transform: rotate(-.25turn);
+        transform-origin: center;
+    }
+}
+
+.homepage-about {
+    flex-basis: 25em;
+    flex-grow: 1;
+    height: 100%;
+    overflow-y: auto;
+    padding: 16px 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+#homepage-no-details {
+    order: 1;
+
+    img {
+        width: 100%;
+    }
+
+    picture {
+        width: 80%;
+    }
+}
+
+#homepage-details {
+    display: none;
+    order: 2;
+
+    &:target {
+        display: block;
+    }
+
+    &:target ~ * {
+        display: none;
+    }
+
+    // The "details" are expanded so we flip the arrow's direction.
+    .homepage-expansion-divider a {
+        transform: rotate(-.5turn);
+        transform-origin: center;
+    }
+}
+
+.homepage-expansion-divider {
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+    --button-width: 32px;
+
+    a {
+        height: var(--button-width);
+        width: var(--button-width);
+
+        background-color: var(--oc-gray-1);
+        color: var(--oc-gray-6);
+        font-weight: bold;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border: none;
+        border-width: 1px;
+        border-style: solid;
+        border-color: var(--oc-gray-1);
+        border-radius: calc(var(--button-width) / 2);
+
+        /* This is the fully expanded size (40px) minus normal size (32px), half for each side. */
+        margin-top: 4px;
+        margin-bottom: 4px;
+
+        &:hover, &:focus {
+            --button-width: 40px;
+            background-color: var(--oc-gray-3);
+            border-color: var(--oc-gray-3);
+            text-decoration: none;
+
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+    }
+
+    .expandy-lines {
+        border-bottom: var(--oc-gray-1) solid 3px;
+        flex-grow: 1;
+        margin-left: calc(var(--button-width) / 2);
+        margin-right: calc(var(--button-width) / 2);
+    }
+}

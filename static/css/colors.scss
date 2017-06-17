@@ -1,0 +1,27 @@
+@import "open_color";
+
+
+:root {
+    --default-color: var(--oc-gray-8);
+    --link-color: var(--oc-gray-6);
+
+    --authors-color: var(--oc-teal-8);
+    --ordering-color: var(--oc-red-8);
+    --series-color: var(--oc-indigo-8);
+    --volumes-color: var(--oc-orange-8);
+
+    --authors-color-focus: var(--oc-teal-9);
+    --ordering-color-focus: var(--oc-red-9);
+    --series-color-focus: var(--oc-indigo-9);
+    --volumes-color-focus: var(--oc-orange-9);
+
+    --authors-background-color: var(--oc-teal-1);
+    --ordering-background-color: var(--oc-red-1);
+    --series-background-color: var(--oc-indigo-1);
+    --volumes-background-color: var(--oc-orange-1);
+
+    --authors-border-color: var(--oc-teal-3);
+    --ordering-border-color: var(--oc-red-3);
+    --series-border-color: var(--oc-indigo-3);
+    --volumes-border-color: var(--oc-orange-3);
+}

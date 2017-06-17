@@ -1,0 +1,59 @@
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    color: var(--default-color);
+    // https://booking.design/implementing-system-fonts-on-booking-com-a-lesson-learned-bdc984df627f
+    font-family: BlinkMacSystemFont, -apple-system, “Segoe UI”, Roboto, Helvetica, Arial, sans-serif;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    --margin-width: 5vw;
+    margin-left: var(--margin-width);
+    margin-right: var(--margin-width);
+    max-width: 1000px;
+
+    @media (min-width: 600px) {
+        --margin-width: 10vw;
+    }
+
+    @media (min-width: 800px) {
+        --margin-width: 15vw;
+    }
+}
+
+h1 {
+    font-size: 3rem;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+
+    &:hover, &:focus {
+        text-decoration: underline;
+        outline: none;
+    }
+
+    &.external {
+        color: var(--link-color);
+    }
+}
+
+.authors { color: var(--authors-color); }
+.ordering { color: var(--ordering-color); }
+.series { color: var(--series-color); }
+.volumes { color: var(--volumes-color); }
+
+.authors.with-bg { background-color: var(--authors-background-color); }
+.ordering.with-bg { background-color: var(--ordering-background-color); }
+.series.with-bg { background-color: var(--series-background-color); }
+.volumes.with-bg { background-color: var(--volumes-background-color); }
