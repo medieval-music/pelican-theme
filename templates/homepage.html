@@ -6,14 +6,22 @@
 {{ SITEURL }}/{{ THEME_STATIC_DIR }}/img/homepage-{{ size }}.{{ format }} {{ size }}w{% if not last %},{% endif %}
 {% endmacro %}
 
+{% macro menu_link(link, class, text) %}
+<li class="{{ class }} with-bg">
+    <a href="{{ SITEURL }}/{{ link }}">
+        <span class="rotated-text">{{ text }}</span>
+    </a>
+</li>
+{% endmacro %}
+
 {% block body %}
 <div id="homepage-frame">
 
     <ul id="homepage-menu">
-        <li class="ordering with-bg"><a href="{{ SITEURL }}/ordering">Ordering</a></li>
-        <li class="authors with-bg"><a href="{{ SITEURL }}/{{ AUTHORS_URL }}">Authors</a></li>
-        <li class="series with-bg"><a href="{{ SITEURL }}/series">Series</a></li>
-        <li class="volumes with-bg"><a href="{{ SITEURL }}/volumes">Volumes</a></li>
+        {{ menu_link('ordering', 'ordering', 'Ordering') }}
+        {{ menu_link('authors', AUTHORS_URL, 'Authors') }}
+        {{ menu_link('series', 'series', 'Series') }}
+        {{ menu_link('volumes', 'volumes', 'Volumes') }}
     </ul>
 
     <div class="homepage-about" id="homepage-details">
