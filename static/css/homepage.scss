@@ -1,5 +1,6 @@
 $mobile-max-width: 649px;
 
+
 #homepage-frame {
     --core-flex-direction: row;
 
@@ -26,11 +27,12 @@ $mobile-max-width: 649px;
     }
 }
 
+
 #homepage-menu {
     flex-grow: 3;
     list-style: none;
     margin: 0;
-    padding: 0 16px;
+    padding: 0 $std-space;
 
     display: flex;
     justify-content: space-between;
@@ -43,7 +45,7 @@ $mobile-max-width: 649px;
     }
 
     li + li {
-        margin-left: 16px;
+        margin-left: $std-space;
     }
 
     a {
@@ -64,8 +66,9 @@ $mobile-max-width: 649px;
     }
 }
 
+
 .homepage-about {
-    $homepage-about-padding: 16px;
+    $homepage-about-padding: $std-space;
 
     flex-basis: 25em;
     flex-grow: 1;
@@ -106,6 +109,7 @@ $mobile-max-width: 649px;
     }
 }
 
+
 #homepage-details {
     display: none;
     order: 2;
@@ -125,12 +129,13 @@ $mobile-max-width: 649px;
     }
 }
 
+
 .homepage-expansion-divider {
     display: flex;
     align-items: center;
     width: 100%;
 
-    --button-width: 32px;
+    --button-width: 2 * $std-space;
 
     a {
         height: var(--button-width);

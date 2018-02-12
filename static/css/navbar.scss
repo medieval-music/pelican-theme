@@ -22,7 +22,7 @@ $hide-title-in-navbar-width: 460px;
             display: flex;
             height: $navbar-height;
             justify-content: center;
-            padding: 16px;
+            padding: $std-space;
             width: var(--navbar-item-width);
         }
     }
