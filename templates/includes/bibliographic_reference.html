@@ -1,11 +1,31 @@
 <h2>Bibliographic Reference</h2>
 
 <cite class="bibliographic-reference">
-    {% if page.author is not equalto AUTHOR %}{{ page.author }}.{% elif page.editor %}{{ page.editor}}&nbsp;(editor).{% endif %}
-
+{# 1. Author: full name of author, editor. If none, of institution. #}
+    {%- if page.imm_authors_bib -%}
+        {{ page.imm_authors_bib }}
+    {%- else -%}
+        {{ INSTITUTION_AUTHOR }}
+    {%- endif -%}.
+{# 2. Title: full title, including subtitle. #}
     <i>{{ page.title }}</i>.
-
-    {% if page.publisher %}{{ page.publisher }},{% endif %}
-
-    {% if page.place and page.year %}{{ page.place }}:&ensp;<time>{{ page.year }}</time>.{% endif %}
+{# 3. Editor, compiler, translator. #}
+    {%- if page.imm_editors_bib -%}
+        Edited by {{ page.imm_editors_bib }}.
+    {%- endif -%}
+{# 4. Edition, if not first. #}
+    {# Note: Not currently recorded in any IMM record. #}
+{# 5. Volume: of this book, in a multi-volume title. #}
+    {# Note: Not currently recorded in any IMM record. #}
+{# 6. Series title, and volume number within the series. #}
+    {{ SERIES_NAMES[page.series] }}&nbsp;{{ page.volume_latin_numerals }}.
+{# 7. Facts of publication: city, publisher, date. #}
+    {{ page.publisher|default('IMM') }}, {{ page.place|default('[Ottawa?]') }}:
+    {% if page.year %}
+        <time datetime="{{ page.year }}-01-01">{{ page.year }}</time>.
+    {% elif page.date %}
+        <time datetime="{{ page.date.year }}-01-01">{{ page.date.year }}</time>.
+    {% else %}
+        n.d.
+    {% endif %}
 </cite>
