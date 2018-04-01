@@ -22,11 +22,18 @@ main {
     max-width: 1000px;
 
     @media (min-width: 600px) {
-        --margin-width: $std-space / 2;
+        // --margin-width: $std-space / 2;
+        --margin-width: .5rem;
     }
 
     @media (min-width: 800px) {
-        --margin-width: $std-space;
+        // --margin-width: $std-space;
+        --margin-width: 1rem;
+    }
+
+    @media (min-width: 1032px) {
+        // the @media query means: 1000px + ( 2 * $std-space )
+        --margin-width: auto;
     }
 }
 
