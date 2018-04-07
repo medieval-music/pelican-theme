@@ -1,0 +1,26 @@
+{% extends "base_with_navbar.html" %}
+
+{% block title %}News{% endblock %}
+
+{% block content %}
+
+<h1>News</h1>
+
+<ul class="news">
+    {% for news_item in articles|sort(attribute='date', reverse=True) %}
+    <li>
+        <article>
+            <header>
+                <h2>{{ news_item.title }}</h2>
+                <time datetime="{{ news_item.date.isoformat() }}">{{ news_item.date.day }} {{ news_item.date.strftime('%B %Y') }}</time>
+                {% if news_item.summary is defined %}
+                    <p>{{ news_item.summary|striptags }}</p>
+                {% endif %}
+            </header>
+            <section>{{ news_item.content }}</section>
+        </article>
+    </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

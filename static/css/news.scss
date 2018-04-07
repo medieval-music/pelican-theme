@@ -1,0 +1,29 @@
+
+ul.news {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    p {
+        margin: 0;
+    }
+
+    header {
+        h2 {
+            margin-bottom: 0;
+        }
+
+        p {
+            color: var(--deemphasized-color);
+        }
+    }
+
+    section {
+        padding-bottom: 1em;
+        padding-top: 1em;
+
+        p + p {
+            margin-top: 1em;
+        }
+    }
+}
