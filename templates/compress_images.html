@@ -1,8 +1,0 @@
-#!/bin/bash
-
-{% if HOMEPAGE_IMAGE_SIZES is defined %}
-{% for width in HOMEPAGE_IMAGE_SIZES %}
-convert static/img/laurier_hymnal.jpg -resize {{ width }} static/img/homepage-{{ width }}.jpg
-convert static/img/laurier_hymnal.jpg -resize {{ width }} static/img/homepage-{{ width }}.webp
-{% endfor %}
-{% endif %}
