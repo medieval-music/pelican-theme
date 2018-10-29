@@ -58,9 +58,11 @@ a {
 .authors { color: var(--authors-color); }
 .ordering { color: var(--ordering-color); }
 .series { color: var(--series-color); }
+.titles { color: var(--titles-color); }
 .volumes { color: var(--volumes-color); }
 
 .authors.with-bg { background-color: var(--authors-background-color); }
 .ordering.with-bg { background-color: var(--ordering-background-color); }
 .series.with-bg { background-color: var(--series-background-color); }
+.titles.with-bg { background-color: var(--titles-background-color); }
 .volumes.with-bg { background-color: var(--volumes-background-color); }

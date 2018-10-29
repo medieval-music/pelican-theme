@@ -42,6 +42,11 @@
         background-color: var(--series-background-color);
         border-color: var(--series-border-color);
     }
+    &.titles-list > li > a:hover,
+    &.titles-list > li > a:focus {
+        background-color: var(--titles-background-color);
+        border-color: var(--titles-border-color);
+    }
     &.volume-list > li > a:hover,
     &.volume-list > li > a:focus {
         background-color: var(--volumes-background-color);
@@ -82,6 +87,9 @@
 .series-list .expansion-part {
     border-color: var(--series-border-color);
 }
+.titles-list .expansion-part {
+    border-color: var(--titles-border-color);
+}
 .volume-list .expansion-part {
     border-color: var(--volumes-border-color);
 }
@@ -93,6 +101,10 @@
 .series-list .list-of-books a:hover,
 .series-list .list-of-books a:focus {
     color: var(--series-color-focus);
+}
+.titles-list .list-of-books a:hover,
+.titles-list .list-of-books a:focus {
+    color: var(--titles-color-focus);
 }
 .volume-list .list-of-books a:hover,
 .volume-list .list-of-books a:focus {

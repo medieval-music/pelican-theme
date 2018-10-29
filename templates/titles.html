@@ -1,0 +1,35 @@
+{% extends "base_with_navbar.html" %}
+
+{% block title %}Titles{% endblock %}
+
+{% block content %}
+<h1>Titles</h1>
+
+<ol class="content-list titles-list">
+    {# TODO: add "titles" stuff here #}
+{% for series in pages|groupby('series') %}
+{% if series.grouper != DEFAULT_METADATA['series'] %}
+    <li id="{{ series.grouper|lower|replace(' ', '-') }}">
+        <a href="#{{ series.grouper|lower|replace(' ', '-') }}">
+            {{ SERIES_NAMES[series.grouper] }}
+        </a>
+        <div class="expansion-part">
+            <h2>{{ SERIES_NAMES[series.grouper] }}</h2>
+            <ol class="list-of-books">
+            {% for book in series.list|sort(attribute='volume_sort') %}
+                {% if book.volume != DEFAULT_METADATA['volume'] %}
+                <li>
+                    <!-- volume_sort: {{ book.volume_sort }} -->
+                    &rarr;&nbsp;
+                    {{ book.volume }}{% if book.volume_part is defined and book.volume_part != DEFAULT_METADATA['volume_part'] %}/{{ book.volume_part }}{% endif %}:
+                    <a href="{{ SITEURL }}/{{ book.url }}">{{ book.title }}</a>
+                </li>
+                {% endif %}
+            {% endfor %}
+            </ol>
+        </div>
+    </li>
+{% endif %}
+{% endfor %}
+</ol>
+{% endblock %}
