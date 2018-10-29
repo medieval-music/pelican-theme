@@ -6,30 +6,21 @@
 <h1>Titles</h1>
 
 <ol class="content-list titles-list">
-    {# TODO: add "titles" stuff here #}
-{% for series in pages|groupby('series') %}
-{% if series.grouper != DEFAULT_METADATA['series'] %}
-    <li id="{{ series.grouper|lower|replace(' ', '-') }}">
-        <a href="#{{ series.grouper|lower|replace(' ', '-') }}">
-            {{ SERIES_NAMES[series.grouper] }}
-        </a>
-        <div class="expansion-part">
-            <h2>{{ SERIES_NAMES[series.grouper] }}</h2>
-            <ol class="list-of-books">
-            {% for book in series.list|sort(attribute='volume_sort') %}
-                {% if book.volume != DEFAULT_METADATA['volume'] %}
-                <li>
-                    <!-- volume_sort: {{ book.volume_sort }} -->
-                    &rarr;&nbsp;
-                    {{ book.volume }}{% if book.volume_part is defined and book.volume_part != DEFAULT_METADATA['volume_part'] %}/{{ book.volume_part }}{% endif %}:
-                    <a href="{{ SITEURL }}/{{ book.url }}">{{ book.title }}</a>
-                </li>
-                {% endif %}
-            {% endfor %}
-            </ol>
-        </div>
-    </li>
-{% endif %}
+{% for book in pages|sort(attribute='title') %}
+    {% if book.title and book.url %}
+        {% if loop.previtem and loop.previtem.title[0] != book.title[0] %}
+            <li><div class="category-letter">{{ book.title[0] }}</div>
+                <ol class="list-of-books">
+        {% endif %}
+                    <li>
+                        &rarr;&nbsp;
+                        <a href="{{ SITEURL }}/{{ book.url }}">{{ book.title }}</a>
+                    </li>
+        {% if loop.last or (loop.nextitem and loop.nextitem.title[0] != book.title[0]) %}
+                </ol>
+            </li>
+        {% endif %}
+    {% endif %}
 {% endfor %}
 </ol>
 {% endblock %}

@@ -31,6 +31,13 @@
         }
     }
 
+    .category-letter {
+        font-size: 1.25em;
+        font-weight: bold;
+        margin-top: $std-space * 2;
+        margin-bottom: $std-space;
+    }
+
     // TODO: there's probably a way to do this with a "function"-alike but I don't remember off the top of my head
     &.author-list > li > a:hover,
     &.author-list > li > a:focus {
