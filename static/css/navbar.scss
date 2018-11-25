@@ -11,7 +11,7 @@ $hide-title-in-navbar-width: 460px;
     display: flex;
     height: $navbar-height;
     justify-content: space-between;
-    margin-bottom: 16px;
+    margin-bottom: $std-space;
     padding: 0 5vw;
 
     nav {
