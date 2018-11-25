@@ -6,17 +6,17 @@
 <h1>Titles</h1>
 
 <ol class="content-list titles-list">
-{% for book in pages|sort(attribute='title') %}
+{% for book in pages|sort(attribute='title_sort') %}
     {% if book.title and book.url %}
-        {% if loop.previtem and loop.previtem.title[0] != book.title[0] %}
-            <li><div class="category-letter">{{ book.title[0] }}</div>
+        {% if loop.previtem and loop.previtem.title_sort_initial != book.title_sort_initial %}
+            <li><div class="category-letter">{{ book.title_sort_initial.upper() }}</div>
                 <ol class="list-of-books">
         {% endif %}
                     <li>
                         &rarr;&nbsp;
                         <a href="{{ SITEURL }}/{{ book.url }}">{{ book.title }}</a>
                     </li>
-        {% if loop.last or (loop.nextitem and loop.nextitem.title[0] != book.title[0]) %}
+        {% if loop.last or (loop.nextitem and loop.nextitem.title_sort_initial != book.title_sort_initial) %}
                 </ol>
             </li>
         {% endif %}
