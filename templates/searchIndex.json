@@ -1,0 +1,26 @@
+[
+{% for book in pages|sort(attribute='title_sort') %}
+{% if book.title %}
+    {
+        "title": "{{ book.title|striptags|escape|trim }}",
+        "authors_bib": "{{ book.imm_authors_bib }}",
+        "authors": [
+            {% for author in book.imm_authors %}
+            "{{ author|trim }}"{% if not loop.last %},{% endif %}
+            {% endfor %}
+        ],
+        "editors": [
+            {% for editor in book.imm_editors %}
+            "{{ editor|trim }}"{% if not loop.last %},{% endif %}
+            {% endfor %}
+        ],
+        "isbn": "{{ book.isbn13|trim }}",
+        "price": "{{ book.price|trim }}",
+        "series": "{{ SERIES_NAMES[book.series]|trim }}",
+        "year": "{{ book.year|trim }}",
+        "url": "{{ book.url|trim|urlencode }}"
+    }{% if not loop.last %},{% endif %}
+
+{% endif %}
+{% endfor %}
+]

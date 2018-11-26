@@ -59,3 +59,14 @@ a {
     .#{$category} { color: var(--#{$category}-color); }
     .#{$category}.with-bg { background-color: var(--#{$category}-background-color); }
 }
+
+// things only visible to a screenreader
+.sr-only {
+    display: block;
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+}

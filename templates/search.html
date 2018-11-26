@@ -1,0 +1,30 @@
+{% extends "base_with_navbar.html" %}
+
+{% block title %}Search Results{% endblock %}
+
+{% block content %}
+<h1>Search</h1>
+
+<div>
+    <form id="imm-search-form">
+        <label for="imm-search-field" class="sr-only">Search</label>
+        <input id="imm-search-field" type="text" placeholder="e.g., Hildegard">
+        <button id="imm-search-btn" type="submit">Search</button>
+    </form>
+</div>
+
+<div>
+    <h2>Results</h2>
+    
+    <div id="imm-search-result-list" class="search-result-list"></div>
+
+    <div class="no-results-message">
+        No results found.
+    </div>
+
+    <div class="search-pagination">
+        <a href="" class="prev-page">Previous Page</a>
+        <a href="" class="next-page">Next Page</a>
+    </div>
+</div>
+{% endblock %}
