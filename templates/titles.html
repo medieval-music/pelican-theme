@@ -8,14 +8,12 @@
 <ol class="content-list titles-list">
 {% for book in pages|sort(attribute='title_sort') %}
     {% if book.title and book.url %}
-        {% if loop.previtem and loop.previtem.title_sort_initial != book.title_sort_initial %}
+        {# We need the "or loop.first" here because the first item won't have any "loop.previtem" for comparison. #}
+        {% if (loop.previtem and loop.previtem.title_sort_initial != book.title_sort_initial) or loop.first %}
             <li><div class="category-letter">{{ book.title_sort_initial.upper() }}</div>
                 <ol class="list-of-books">
         {% endif %}
-                    <li>
-                        &rarr;&nbsp;
-                        <a href="{{ SITEURL }}/{{ book.url }}">{{ book.title }}</a>
-                    </li>
+                    <li><a href="{{ SITEURL }}/{{ book.url }}">{{ book.title }}</a></li>
         {% if loop.last or (loop.nextitem and loop.nextitem.title_sort_initial != book.title_sort_initial) %}
                 </ol>
             </li>

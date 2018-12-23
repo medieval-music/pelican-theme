@@ -8,6 +8,7 @@
     font-size: 1.1em;
     line-height: 1.6em;
     margin-left: 5vw;
+    margin-bottom: 3 * $std-space;
 
     *:target {
         margin-left: -5vw;
@@ -83,5 +84,13 @@
     .#{$category}-list .list-of-books a:hover,
     .#{$category}-list .list-of-books a:focus {
         color: var(--#{$category}-color-focus);
+    }
+}
+
+.titles-list .list-of-books {
+    list-style-type: '\2192';  // "right arrow"
+
+    li {
+        padding-left: $std-space;
     }
 }
