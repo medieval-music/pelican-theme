@@ -88,7 +88,26 @@
 }
 
 .titles-list .list-of-books {
-    list-style-type: '\2192';  // "right arrow"
+    // Browser support for string values of list-style-type is very limited. It looks better when
+    // it's available, so we'll use it when we can, but we also need to start with this fallback
+    // for browsers without support.
+    //     Also note: the horizontal positioning is different between browsers that do and do not
+    // support the thing. I don't really mind.
+    li:before {
+        content: '\2192';
+        left: -1em;
+        position: relative;
+    }
+
+    @supports (list-style-type: 'strings') {
+        list-style-type: '\2192';  // "right arrow" for Firefox
+
+        li:before {
+            content: unset;
+            left: unset;
+            position: unset;
+        }
+    }
 
     li {
         padding-left: $std-space;
