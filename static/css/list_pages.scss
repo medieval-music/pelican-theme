@@ -1,5 +1,29 @@
 // For the pages that are lists of books (i.e., Authors, Series, Volumes).
 
+// START OF THE RESPONSIVE VARIABLES
+// When the <main> element reaches its full width, this <nav> only requires one line. As the
+// viewport becomes smaller, the <nav> uses more than one line. These variables say at which
+// viewport widths this happens.
+$is-2-lines: 750px;  // 751 is one line; 750 is two lines
+$is-3-lines: 599px;
+$is-4-lines: 451px;
+$is-5-lines: 356px;
+
+$nav-position-from-top: $std-space;
+$category-letter-margin-top: $std-space * 2;
+$sticky-list-nav-border-width: $std-space / 16;  // 1px, the stupid way
+$sticky-list-nav-vertical-padding: 1rem;
+$sticky-list-nav-letter-height: (19 / 16) * $std-space;  // NB: 19px; not used to set letter height; I measured it
+
+// These are the measured heights of the <nav> element depending on how many lines are in it.
+// TODO: gotta be a better way
+// TODO: revise the descriptive comment
+$one-line-height: (2 * $sticky-list-nav-border-width) + (2 * $sticky-list-nav-vertical-padding) + (1 * $sticky-list-nav-letter-height);
+$two-line-height: (4 * $sticky-list-nav-border-width) + (4 * $sticky-list-nav-vertical-padding) + (2 * $sticky-list-nav-letter-height);
+$three-line-height: (6 * $sticky-list-nav-border-width) + (6 * $sticky-list-nav-vertical-padding) + (3 * $sticky-list-nav-letter-height);
+$four-line-height: (8 * $sticky-list-nav-border-width) + (8 * $sticky-list-nav-vertical-padding) + (4 * $sticky-list-nav-letter-height);
+// END OF THE RESPONSIVE VARIABLES
+
 .list-of-books {
     padding-left: 2rem;
 }
@@ -9,17 +33,6 @@
     line-height: 1.6em;
     margin-left: 5vw;
     margin-bottom: 3 * $std-space;
-
-    *:target {
-        margin-left: -5vw;
-
-        > a {
-            display: none;
-        }
-        .expansion-part {
-            display: block;
-        }
-    }
 
     > li > a {
         border-color: transparent;
@@ -35,7 +48,7 @@
     .category-letter {
         font-size: 1.25em;
         font-weight: bold;
-        margin-top: $std-space * 2;
+        margin-top: $category-letter-margin-top;
         margin-bottom: $std-space;
     }
 
@@ -44,7 +57,19 @@
         &.#{$category}-list > li > a:focus {
             background-color: var(--#{$category}-background-color);
             border-color: var(--#{$category}-border-color);
-            /* MARK #{$category} */
+        }
+    }
+}
+
+.content-list.authors-list, .content-list.volumes-list {
+    *:target {
+        margin-left: -5vw;
+
+        > a {
+            display: none;
+        }
+        .expansion-part {
+            display: block;
         }
     }
 }
@@ -111,5 +136,88 @@
 
     li {
         padding-left: $std-space;
+    }
+}
+
+.target-element {
+    position: relative;
+
+    // no matter how many rows of the sticky letter header, we always need to account for these
+    $base-vertical-offset: $nav-position-from-top + $category-letter-margin-top;
+    top: -1 * ($one-line-height + $base-vertical-offset);
+
+    // Adjust the position of the letter target according to how many rows in the <nav> element.
+    @media (max-width: #{$is-2-lines}) {
+        top: -1 * ($two-line-height + $base-vertical-offset);
+    }
+    @media (max-width: #{$is-3-lines}) {
+        top: -1 * ($three-line-height + $base-vertical-offset);
+    }
+    @media (max-width: #{$is-4-lines}) {
+        top: -1 * ($four-line-height + $base-vertical-offset);
+    }
+}
+
+.sticky-list-nav {
+    // basic appearance
+    background: var(--background-color);
+    border: solid $sticky-list-nav-border-width var(--default-color);
+    display: inline-block;
+    width: 100%;
+
+    // make it "float" when you scroll down
+    position: -webkit-sticky;
+    position: sticky;
+    top: $nav-position-from-top;
+    z-index: $sticky-list-nav-zindex;
+
+    // Smaller than this, it's difficult to show 26 letters at the same time as the page content.
+    // We want to use height-based judgement too, since someone on a desktop or laptop screen might
+    // have a narrow but tall aspect ratio.
+    $required-min-factor: 3;
+    @media (max-height: #{$one-line-height * $required-min-factor}) {
+        position: initial;
+        top: unset;
+        z-index: unset;
+    }
+    @media (max-width: #{$is-2-lines}) and (max-height: #{$two-line-height * $required-min-factor}) {
+        position: initial;
+        top: unset;
+        z-index: unset;
+    }
+    @media (max-width: #{$is-3-lines}) and (max-height: #{$three-line-height * $required-min-factor}) {
+        position: initial;
+        top: unset;
+        z-index: unset;
+    }
+    @media (max-width: #{$is-4-lines}) and (max-height: #{$four-line-height * $required-min-factor}) {
+        position: initial;
+        top: unset;
+        z-index: unset;
+    }
+
+    ul {
+        list-style: none;
+        margin: 0 0.5rem;
+        padding: 0;
+
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    a {
+        color: var(--link-color);
+        display: inline-block;
+        padding: $sticky-list-nav-vertical-padding 0.5rem;
+
+        &:hover, &:focus {
+            background-color: var(--link-color);
+            color: var(--background-color);
+        }
+
+        @media (max-width: 750px) {
+            padding: $sticky-list-nav-vertical-padding 1rem;
+        }
     }
 }
