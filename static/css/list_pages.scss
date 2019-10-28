@@ -61,7 +61,7 @@ $four-line-height: (8 * $sticky-list-nav-border-width) + (8 * $sticky-list-nav-v
     }
 }
 
-.content-list.authors-list, .content-list.volumes-list {
+.content-list.authors-list {
     *:target {
         margin-left: -5vw;
 
