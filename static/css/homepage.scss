@@ -135,7 +135,7 @@ $mobile-max-width: 649px;
     align-items: center;
     width: 100%;
 
-    --button-width: 2 * $std-space;
+    --button-width: 2rem;
 
     a {
         height: var(--button-width);
@@ -160,7 +160,7 @@ $mobile-max-width: 649px;
         margin-bottom: 4px;
 
         &:hover, &:focus {
-            --button-width: 40px;
+            --button-width: 2.5rem;
             background-color: var(--oc-gray-3);
             border-color: var(--oc-gray-3);
             text-decoration: none;
