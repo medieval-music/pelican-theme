@@ -74,6 +74,33 @@ $four-line-height: (8 * $sticky-list-nav-border-width) + (8 * $sticky-list-nav-v
     }
 }
 
+.series-list .year-divider {
+    // NB: There's no other use of .year-divider, but I'm nesting the selector anyway, for fun.
+
+    align-items: center;
+    color: var(--oc-gray-6);
+    display: flex;
+    font-size: 1.1em;
+    margin: 1rem 0 0.25rem;
+
+    $divider-line-margin: 0.75rem;
+
+    &:before, &:after {
+        content: "";
+        border: 1px solid var(--oc-gray-3);
+        height: 0;
+    }
+
+    &:before {
+        margin-right: $divider-line-margin;
+        width: 2rem;
+    }
+    &:after {
+        flex-grow: 1;
+        margin-left: $divider-line-margin;
+    }
+}
+
 .content-list, .content-list ol {
     list-style: none;
     padding: 0;

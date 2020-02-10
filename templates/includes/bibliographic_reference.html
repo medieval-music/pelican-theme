@@ -21,10 +21,8 @@
     {{ SERIES_NAMES[page.series] }}&nbsp;{{ page.volume_latin_numerals }}.
 {# 7. Facts of publication: city, publisher, date. #}
     {{ page.place|default('[Ottawa?]') }}: {{ page.publisher|default('IMM') }},
-    {% if page.year %}
-        <time datetime="{{ page.year }}-01-01">{{ page.year }}</time>.
-    {% elif page.date %}
-        <time datetime="{{ page.date.year }}-01-01">{{ page.date.year }}</time>.
+    {% if page.imm_date and page.imm_year %}
+        <time datetime="{{ page.imm_date.isoformat() }}">{{ page.imm_year }}</time>.
     {% else %}
         n.d.
     {% endif %}
