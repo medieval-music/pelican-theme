@@ -1,4 +1,4 @@
-$mobile-max-width: 649px;
+$mobile-max-width: 40.5624rem;  // 649px when 1rem is 16px
 
 
 #homepage-frame {
@@ -13,7 +13,7 @@ $mobile-max-width: 649px;
     h1 {
         text-align: center;
 
-        @media (max-width: 900px) {
+        @media (max-width: 56.25rem) {  // 900px when 1rem is 16px
             font-size: calc(1em + 4vw);
         }
 
@@ -57,7 +57,7 @@ $mobile-max-width: 649px;
         align-items: center;
     }
 
-    @media (min-width: #{$mobile-max-width + 1px}) {
+    @media (min-width: #{$mobile-max-width}) {
         .rotated-text {
             position: absolute;
             transform: rotate(-.25turn);
