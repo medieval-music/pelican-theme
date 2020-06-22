@@ -101,6 +101,13 @@ $four-line-height: (8 * $sticky-list-nav-border-width) + (8 * $sticky-list-nav-v
     }
 }
 
+.series-subtitle {
+    color: var(--oc-gray-6);
+    font-size: 0.8em;
+    font-weight: normal;
+    margin-top: 0.25rem;
+}
+
 .content-list, .content-list ol {
     list-style: none;
     padding: 0;

@@ -13,7 +13,14 @@
             {{ SERIES_NAMES[series.grouper] }}
         </a>
         <div class="expansion-part">
-            <h2>{{ SERIES_NAMES[series.grouper] }}</h2>
+            <h2>
+                <div>{{ SERIES_NAMES[series.grouper] }}</div>
+                {% if series.grouper in SERIES_ALT_NAMES %}
+                    {% for alt_name in SERIES_ALT_NAMES[series.grouper] %}
+                        <div class="series-subtitle">{{ alt_name }}</div>
+                    {% endfor %}
+                {% endif %}
+            </h2>
             <ol class="list-of-books">
             {% for book in series.list|sort(attribute='volume_sort') %}
                 {% if book.volume != DEFAULT_METADATA['volume'] %}
