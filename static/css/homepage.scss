@@ -55,6 +55,14 @@ $mobile-max-width: 40.5624rem;  // 649px when 1rem is 16px
         display: flex;
         justify-content: center;
         align-items: center;
+
+        &:hover, &:focus {
+            text-decoration: underline;
+        }
+    }
+
+    .rotated-text {
+        text-decoration: inherit;
     }
 
     @media (min-width: #{$mobile-max-width}) {
