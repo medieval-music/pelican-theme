@@ -13,6 +13,13 @@
         <li>
             <a class="series" href="{{ SITEURL }}/series#{{ page.series|lower|replace(' ', '-') }}">
                 Series: {{ SERIES_NAMES[page.series] }}
+                {%- if page.series in SERIES_ALT_NAMES -%}
+                    &puncsp;(
+                    {%- for alt_name in SERIES_ALT_NAMES[page.series] -%}
+                        {{ alt_name }}{% if not loop.last %}, {% endif %}
+                    {%- endfor -%}
+                    )
+                {%- endif -%}
             </a>
         </li>
         {% if page.volume_part is defined and page.volume_part != DEFAULT_METADATA['volume_part'] %}
