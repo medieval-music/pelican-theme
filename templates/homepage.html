@@ -7,7 +7,7 @@
 {% endmacro %}
 
 {% macro menu_link(link, class, text) %}
-<li class="{{ class }} with-bg">
+<li class="homepage-menu-item {{ class }} with-bg">
     <a href="{{ SITEURL }}/{{ link }}">
         <span class="rotated-text">{{ text }}</span>
     </a>
@@ -15,9 +15,9 @@
 {% endmacro %}
 
 {% block body %}
-<div id="homepage-frame">
+<div class="homepage-frame">
 
-    <ul id="homepage-menu">
+    <ul class="homepage-menu">
         {{ menu_link('ordering', 'ordering', 'Ordering') }}
         {{ menu_link('authors', AUTHORS_URL, 'Authors') }}
         {{ menu_link('series', 'series', 'Series') }}
@@ -25,20 +25,10 @@
         {{ menu_link('news', 'news', 'News') }}
     </ul>
 
-    <div class="homepage-about" id="homepage-details">
-        <h1>Institute of Mediaeval Music</h1>
+    <h1 class="homepage-title">Institute of Mediaeval Music</h1>
 
-        <div class="homepage-expansion-divider">
-            <span class="expandy-lines"></span>
-            <a href="#">V</a>
-            <span class="expandy-lines"></span>
-        </div>
-
-        {{ page.content }}
-    </div>
-
-    <div class="homepage-about" id="homepage-no-details">
-        <figure>
+    <div class="homepage-about homepage-image-section">
+        <figure class="homepage-figure">
             <picture>
                 {# The size in @srcset is max viewport width to show that image source. #}
                 {% if HOMEPAGE_IMAGE_SIZES is defined %}
@@ -67,14 +57,10 @@
                 <figcaption>{{ HOMEPAGE_IMAGE_CREDIT }}</figcaption>
             {% endif %}
         </figure>
+    </div>
 
-        <h1>Institute of Mediaeval Music</h1>
-
-        <div class="homepage-expansion-divider">
-            <span class="expandy-lines"></span>
-            <a href="#homepage-details">V</a>
-            <span class="expandy-lines"></span>
-        </div>
+    <div class="homepage-about homepage-text-section">
+        {{ page.content }}
     </div>
 
 </div>

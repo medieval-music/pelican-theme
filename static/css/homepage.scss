@@ -1,187 +1,154 @@
 $mobile-max-width: 40.5624rem;  // 649px when 1rem is 16px
 
-
-#homepage-frame {
-    --core-flex-direction: row;
-
-    display: flex;
-    flex-direction: var(--core-flex-direction);
+.homepage-frame {
     height: 100%;
-    justify-content: space-between;
     width: 100%;
 
-    h1 {
-        text-align: center;
+    display: grid;
+    grid-template-areas:
+        "menu title"
+        "menu image"
+        "menu text"
+    ;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: min-content min-content 1fr;
+}
 
-        @media (max-width: 56.25rem) {  // 900px when 1rem is 16px
-            font-size: calc(1em + 4vw);
-        }
+.homepage-title {
+    grid-area: title;
 
-        @media (max-width: $mobile-max-width) {
-            margin: .5em;
-        }
+    text-align: center;
+
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+
+    // Default font size is 3rem (set in generics.scss).
+    //@media (max-width: 81.25rem) { // 1300px when 1rem is 16px
+    //    font-size: 2.9rem;
+    //}
+
+    // TODO: next thing should be variable-ized?
+    @media (max-width: 56.25rem) {  // 900px when 1rem is 16px
+        font-size: calc(1em + 4vw);
     }
 
     @media (max-width: $mobile-max-width) {
-        --core-flex-direction: column;
+        margin: .5em;
     }
 }
 
 
-#homepage-menu {
-    flex-grow: 3;
+
+.homepage-menu {
+    grid-area: menu;
+
     list-style: none;
     margin: 0;
-    padding: 0 $std-space;
+    padding: 0 var(--std-space);
 
     display: flex;
     justify-content: space-between;
     align-items: stretch;
-
-    li {
-        flex-grow: 1;
-        font-size: 5vw;
-        min-width: 5vw;
-    }
-
-    li + li {
-        margin-left: $std-space;
-    }
-
-    a {
-        height: 100%;
-        width: 100%;
-
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        &:hover, &:focus {
-            text-decoration: underline;
-        }
-    }
-
-    .rotated-text {
-        text-decoration: inherit;
-    }
-
-    @media (min-width: #{$mobile-max-width}) {
-        .rotated-text {
-            position: absolute;
-            transform: rotate(-.25turn);
-            transform-origin: center;
-        }
-    }
 }
 
-
-.homepage-about {
-    $homepage-about-padding: $std-space;
-
-    flex-basis: 25em;
+.homepage-menu-item {
     flex-grow: 1;
+    font-size: 5vw;
+    min-width: 5vw;
+}
+.homepage-menu-item + .homepage-menu-item {
+    margin-left: var(--std-space);
+}
+.homepage-menu-item a {
     height: 100%;
-    overflow-y: auto;
-    padding: $homepage-about-padding 0;
+    width: 100%;
 
     display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
-
-    @media (max-width: $mobile-max-width) {
-        padding-bottom: $homepage-about-padding * 2;
-
-        p, .line-block {
-            margin-left: $homepage-about-padding;
-            margin-right: $homepage-about-padding;
-        }
-    }
+    align-items: center;
+}
+.homepage-menu-item a:hover, .homepage-menu-item a:focus {
+    text-decoration: underline;
 }
 
 
-#homepage-no-details {
-    order: 1;
-
-    img {
-        width: 100%;
-    }
-
-    figure {
-        width: 80%;
-
-        @media (max-width: $mobile-max-width) {
-            margin-bottom: 0;
-            margin-top: 0;
-        }
-    }
+.rotated-text {
+    text-decoration: inherit;
 }
-
-
-#homepage-details {
-    display: none;
-    order: 2;
-
-    &:target {
-        display: block;
-    }
-
-    &:target ~ * {
-        display: none;
-    }
-
-    // The "details" are expanded so we flip the arrow's direction.
-    .homepage-expansion-divider a {
-        transform: rotate(-.5turn);
+@media (min-width: $mobile-max-width) {
+    .rotated-text {
+        position: absolute;
+        transform: rotate(-.25turn);
         transform-origin: center;
     }
 }
 
 
-.homepage-expansion-divider {
+//.homepage-about {
+//    //--homepage-about-padding: $std-space;
+//    //
+//    //height: 100%;
+//    //overflow-y: auto;
+//    //padding: $std-space 0;
+//    //
+//    //display: flex;
+//    //flex-direction: column;
+//    //align-items: center;
+//    //justify-content: center;
+//}
+// TODO: probably delete this?
+//@media (max-width: $mobile-max-width) {
+//    .homepage-about {
+//        padding-bottom: calc(var(--homepage-about-padding) * 2);
+//    }
+//
+//    .homepage-about p {
+//        margin-left: var(--homepage-about-padding);
+//        margin-right: var(--homepage-about-padding);
+//    }
+//}
+
+
+.homepage-text-section {
+    grid-area: text;
+
+    padding: 0 var(--std-space) var(--std-space) var(--std-space);
+}
+//.homepage-text-section p:first-child {
+//    margin-top: 0;
+//}
+.homepage-text-section .line-block {
+    // NB: The .line-block class is provided by Pelican when you specify
+    //     line breaks for some text.
+    margin-bottom: var(--std-space);
+}
+
+
+.homepage-image-section {
+    grid-area: image;
+
+    height: 100%;
+    //padding: var(--std-space) 0;
+
     display: flex;
+    flex-direction: column;
     align-items: center;
-    width: 100%;
+    justify-content: center;
+}
 
-    --button-width: 2rem;
 
-    a {
-        height: var(--button-width);
-        width: var(--button-width);
 
-        background-color: var(--oc-gray-1);
-        color: var(--oc-gray-6);
-        font-weight: bold;
+.homepage-figure {
+    // TODO: probably don't need this width?!
+    //width: 80%;
 
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        border: none;
-        border-width: 1px;
-        border-style: solid;
-        border-color: var(--oc-gray-1);
-        border-radius: calc(var(--button-width) / 2);
-
-        /* This is the fully expanded size (40px) minus normal size (32px), half for each side. */
-        margin-top: 4px;
-        margin-bottom: 4px;
-
-        &:hover, &:focus {
-            --button-width: 2.5rem;
-            background-color: var(--oc-gray-3);
-            border-color: var(--oc-gray-3);
-            text-decoration: none;
-
-            margin-top: 0;
-            margin-bottom: 0;
-        }
+    //// TODO: do we need this margin un-set?
+    @media (max-width: $mobile-max-width) {
+        margin-bottom: 0;
+        margin-top: 0;
     }
 
-    .expandy-lines {
-        border-bottom: var(--oc-gray-1) solid 3px;
-        flex-grow: 1;
-        margin-left: calc(var(--button-width) / 2);
-        margin-right: calc(var(--button-width) / 2);
+    img {
+        width: 100%;
     }
 }
