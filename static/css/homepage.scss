@@ -1,17 +1,41 @@
-$mobile-max-width: 40.5624rem;  // 649px when 1rem is 16px
+$small-max-width: 50rem;  // 800px when 1rem is 16px
+$middle-max-width: 62.5rem;  // 1000px when 1rem is 16px
 
 .homepage-frame {
     height: 100%;
     width: 100%;
 
     display: grid;
-    grid-template-areas:
-        "menu title"
-        "menu image"
-        "menu text"
-    ;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: min-content min-content 1fr;
+}
+@media (min-width: $middle-max-width) {
+    .homepage-frame {
+        grid-template-areas:
+            "menu title"
+            "menu image"
+            "menu text";
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: min-content min-content 1fr;
+    }
+}
+@media (max-width: $middle-max-width) and (min-width: $small-max-width) {
+    .homepage-frame {
+        grid-template-areas:
+            "title title"
+            "menu menu"
+            "image text"
+        ;
+        grid-template-columns: 1fr 1fr;
+    }
+}
+@media (max-width: $small-max-width) {
+    .homepage-frame {
+        grid-template-areas:
+            "title"
+            "menu"
+            "image"
+            "text"
+        ;
+    }
 }
 
 .homepage-title {
@@ -21,18 +45,16 @@ $mobile-max-width: 40.5624rem;  // 649px when 1rem is 16px
 
     padding-left: 1.5rem;
     padding-right: 1.5rem;
+}
 
-    // Default font size is 3rem (set in generics.scss).
-    //@media (max-width: 81.25rem) { // 1300px when 1rem is 16px
-    //    font-size: 2.9rem;
-    //}
-
-    // TODO: next thing should be variable-ized?
-    @media (max-width: 56.25rem) {  // 900px when 1rem is 16px
+@media (max-width: $middle-max-width) {
+    .homepage-title {
         font-size: calc(1em + 4vw);
     }
+}
 
-    @media (max-width: $mobile-max-width) {
+@media (max-width: $small-max-width) {
+    .homepage-title {
         margin: .5em;
     }
 }
@@ -75,7 +97,7 @@ $mobile-max-width: 40.5624rem;  // 649px when 1rem is 16px
 .rotated-text {
     text-decoration: inherit;
 }
-@media (min-width: $mobile-max-width) {
+@media (min-width: $middle-max-width) {
     .rotated-text {
         position: absolute;
         transform: rotate(-.25turn);
@@ -84,39 +106,11 @@ $mobile-max-width: 40.5624rem;  // 649px when 1rem is 16px
 }
 
 
-//.homepage-about {
-//    //--homepage-about-padding: $std-space;
-//    //
-//    //height: 100%;
-//    //overflow-y: auto;
-//    //padding: $std-space 0;
-//    //
-//    //display: flex;
-//    //flex-direction: column;
-//    //align-items: center;
-//    //justify-content: center;
-//}
-// TODO: probably delete this?
-//@media (max-width: $mobile-max-width) {
-//    .homepage-about {
-//        padding-bottom: calc(var(--homepage-about-padding) * 2);
-//    }
-//
-//    .homepage-about p {
-//        margin-left: var(--homepage-about-padding);
-//        margin-right: var(--homepage-about-padding);
-//    }
-//}
-
-
 .homepage-text-section {
     grid-area: text;
 
     padding: 0 var(--std-space) var(--std-space) var(--std-space);
 }
-//.homepage-text-section p:first-child {
-//    margin-top: 0;
-//}
 .homepage-text-section .line-block {
     // NB: The .line-block class is provided by Pelican when you specify
     //     line breaks for some text.
@@ -128,7 +122,6 @@ $mobile-max-width: 40.5624rem;  // 649px when 1rem is 16px
     grid-area: image;
 
     height: 100%;
-    //padding: var(--std-space) 0;
 
     display: flex;
     flex-direction: column;
@@ -136,19 +129,12 @@ $mobile-max-width: 40.5624rem;  // 649px when 1rem is 16px
     justify-content: center;
 }
 
-
-
-.homepage-figure {
-    // TODO: probably don't need this width?!
-    //width: 80%;
-
-    //// TODO: do we need this margin un-set?
-    @media (max-width: $mobile-max-width) {
-        margin-bottom: 0;
-        margin-top: 0;
-    }
-
-    img {
-        width: 100%;
+.homepage-figure img {
+    width: 100%;
+}
+@media (max-width: $small-max-width) {
+    .homepage-figure {
+        margin-top: calc(2 * var(--std-space));
+        margin-bottom: calc(var(--std-space) / 2)
     }
 }
