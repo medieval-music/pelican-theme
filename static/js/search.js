@@ -45,25 +45,28 @@
             return;
         }
 
-        fetch('/static/json/searchIndex.json').then(response => {
-            if (response.status !== 200) {
+        const searchForm = document.getElementById('imm-search-form');
+
+        if (searchForm) {
+            fetch('/static/json/searchIndex.json').then(response => {
+                if (response.status !== 200) {
+                    // TODO: properly report error
+                    console.error(response);
+                    return;
+                }
+
+                return response.json().then(data => {
+                    fuse = new Fuse(data, searchOptions);
+                    searchForm.onsubmit = handleSearch;
+
+                    searchInitialized = true;
+                    window.asdf = fuse;  // TODO: this is temporary
+                });
+            }).catch(err => {
                 // TODO: properly report error
-                console.error(response);
-                return;
-            }
-
-            return response.json().then(data => {
-                fuse = new Fuse(data, searchOptions);
-                const searchForm = document.getElementById('imm-search-form');
-                searchForm.onsubmit = handleSearch;
-
-                searchInitialized = true;
-                window.asdf = fuse;  // TODO: this is temporary
+                console.error('There was an error', err);
             });
-        }).catch(err => {
-            // TODO: properly report error
-            console.error('There was an error', err);
-        });
+        }
     }
 
     function generateSearchResult(result) {
@@ -171,7 +174,7 @@
         results = results.slice(0, resultsPerPage);
 
         const htmlOutput = results.map(generateSearchResult);
-        
+
         htmlOutput.forEach(elem => {
             resultsElem.appendChild(elem);
         });
