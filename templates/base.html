@@ -15,5 +15,9 @@
 <body>
     {% block body %}
     {% endblock %}
+
+    <!-- TODO: must load async and so on -->
+    <script src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/js/vendor/fuse-{{ FUSE_JS_VERSION }}-min.js"></script>
+    <script src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/js/search.js"></script>
 </body>
 </html>

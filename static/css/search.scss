@@ -1,0 +1,53 @@
+/* For the "search" page. */
+
+.search-result {
+    margin: (2 * $std-space) 0;
+
+    h3 {
+        margin-top: $std-space;
+        margin-bottom: $std-space / 2;
+    }
+
+    ul {
+        list-style: none;
+        margin: 0;
+        margin-left: $std-space;
+        padding: 0;
+    }
+}
+
+.search-pagination {
+    display: flex;
+    justify-content: space-between;
+    margin: $std-space 0 (2 * $std-space);
+
+    .prev-page::before {
+        content: "<";
+        margin-right: 0.75 * $std-space;
+    }
+
+    .next-page::after {
+        content: ">";
+        margin-left: 0.75 * $std-space;
+    }
+}
+
+.no-results-message {
+    display: none;
+    margin: (2 * $std-space) 0;
+}
+
+.search-result-list:empty ~ .no-results-message {
+    display: block;
+}
+.search-result-list:empty ~ .search-pagination {
+    display: none;
+}
+
+.item-details {
+    display: flex;
+
+    > * {
+        flex-basis: 50%;
+    }
+}
